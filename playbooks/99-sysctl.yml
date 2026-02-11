@@ -1,0 +1,11 @@
+- name: Configure kernel parameters for Wazuh Indexer
+  hosts: wazuh_indexer
+  become: yes
+
+  tasks:
+    - name: Set vm.max_map_count
+      sysctl:
+        name: vm.max_map_count
+        value: "262144"
+        state: present
+        reload: yes

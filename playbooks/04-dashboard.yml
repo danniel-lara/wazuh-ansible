@@ -1,0 +1,24 @@
+- name: Install Wazuh Dashboard
+  hosts: wazuh_dashboard
+  become: yes
+
+  vars_files:
+    - ../group_vars/all.yml
+
+  tasks:
+    - name: Copy install script
+      copy:
+        src: /tmp/wazuh-install.sh
+        dest: /tmp/wazuh-install.sh
+        mode: '0755'
+
+    - name: Copy install files
+      copy:
+        src: /tmp/wazuh-install-files.tar
+        dest: /tmp/wazuh-install-files.tar
+
+    - name: Install Dashboard
+      command: bash wazuh-install.sh --wazuh-dashboard {{ dashboard_node_name }}
+      args:
+        chdir: /tmp
+        creates: /usr/share/wazuh-dashboard

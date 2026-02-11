@@ -1,0 +1,13 @@
+- name: Start Wazuh Indexer Cluster
+  hosts: wazuh_indexer
+  become: yes
+  run_once: true
+
+  vars_files:
+    - ../group_vars/all.yml
+
+  tasks:
+    - name: Start cluster
+      command: bash wazuh-install.sh --start-cluster
+      args:
+        chdir: /tmp

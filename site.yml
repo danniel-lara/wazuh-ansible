@@ -1,0 +1,6 @@
+- import_playbook: playbooks/00-generate.yml
+- import_playbook: playbooks/99-sysctl.yml
+- import_playbook: playbooks/01-indexer.yml
+- import_playbook: playbooks/02-start-cluster.yml
+- import_playbook: playbooks/03-manager.yml
+- import_playbook: playbooks/04-dashboard.yml

@@ -1,0 +1,24 @@
+- name: Install Wazuh Manager
+  hosts: wazuh_manager
+  become: yes
+
+  vars_files:
+    - ../group_vars/all.yml
+
+  tasks:
+    - name: Copy install script
+      copy:
+        src: /tmp/wazuh-install.sh
+        dest: /tmp/wazuh-install.sh
+        mode: '0755'
+
+    - name: Copy install files
+      copy:
+        src: /tmp/wazuh-install-files.tar
+        dest: /tmp/wazuh-install-files.tar
+
+    - name: Install Wazuh Manager
+      command: bash wazuh-install.sh --wazuh-server {{ manager_node_name }}
+      args:
+        chdir: /tmp
+        creates: /var/ossec

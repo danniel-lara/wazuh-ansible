@@ -1,0 +1,52 @@
+- name: Generate Wazuh config and certificates
+  hosts: wazuh_indexer
+  become: yes
+  run_once: true
+
+  vars_files:
+    - ../group_vars/all.yml
+
+  tasks:
+    - name: Download install script
+      get_url:
+        url: "https://packages.wazuh.com/{{ wazuh_version }}/wazuh-install.sh"
+        dest: /tmp/wazuh-install.sh
+        mode: '0755'
+
+    - name: Download config.yml
+      get_url:
+        url: "https://packages.wazuh.com/{{ wazuh_version }}/config.yml"
+        dest: /tmp/config.yml
+
+    - name: Configure config.yml
+      copy:
+        dest: /tmp/config.yml
+        content: |
+          nodes:
+            indexer:
+              - name: {{ indexer_node_name }}
+                ip: "{{ indexer_ip }}"
+            server:
+              - name: {{ manager_node_name }}
+                ip: "{{ manager_ip }}"
+            dashboard:
+              - name: {{ dashboard_node_name }}
+                ip: "{{ dashboard_ip }}"
+
+    - name: Generate certificates and passwords
+      command: bash wazuh-install.sh --generate-config-files
+      args:
+        chdir: /tmp
+        creates: /tmp/wazuh-install-files.tar
+
+    - name: Fetch install files to controller
+      fetch:
+        src: /tmp/wazuh-install-files.tar
+        dest: /tmp/wazuh-install-files.tar
+        flat: yes
+
+    - name: Fetch install script to controller
+      fetch:
+        src: /tmp/wazuh-install.sh
+        dest: /tmp/wazuh-install.sh
+        flat: yes

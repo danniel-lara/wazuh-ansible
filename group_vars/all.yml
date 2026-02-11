@@ -1,0 +1,14 @@
+wazuh_version: "4.14"
+
+indexer_node_name: "node-1"
+manager_node_name: "wazuh-1"
+dashboard_node_name: "dashboard"
+
+indexer_ip: "10.7.3.108"
+manager_ip: "10.7.3.109"
+dashboard_ip: "10.7.3.110"
+
+ansible_user: seven
+ansible_become: true
+ansible_become_method: sudo
+ansible_python_interpreter: /usr/bin/python3

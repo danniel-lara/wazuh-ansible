@@ -29,8 +29,8 @@ Este projeto automatiza o **deploy completo do Wazuh** (SIEM, XDR & Compliance) 
 ┌─────────────────────────────────────────────────────┐
 │                   Ansible Controller                │
 │                  (Control Node)                     │
-└──────────────┬──────────────┬───────────────────────┘
-               │              │              │
+└──────────────┬─────────────┬────────────────────────┘
+               │             │              │
        ┌───────▼──┐   ┌──────▼───┐   ┌──────▼──────┐
        │ Wazuh    │   │ Wazuh    │   │ Wazuh       │
        │ Indexer  │   │ Manager  │   │ Dashboard   │
@@ -55,6 +55,7 @@ Este projeto automatiza o **deploy completo do Wazuh** (SIEM, XDR & Compliance) 
 - **Ansible** >= 2.15
 - **Python** >= 3.10
 - **SSH** acesso com chave para todos os hosts
+- **Sudo** sem senha configurado nos hosts gerenciados
 ---
 
 ## 📁 Estrutura do Projeto
@@ -74,3 +75,11 @@ wazuh-ansible/
 ├── site.yml                 # Master playbook (orchestrates all)
 └── README.md
 ```
+---
+
+## Autor  
+  **Daniel Lara — Cloud & Security Architect**
+  
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/daniel-lara-souza-37372846/)
+  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/danniel-lara)
+</div>

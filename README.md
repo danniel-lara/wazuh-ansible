@@ -52,6 +52,8 @@ Este projeto automatiza o **deploy completo do Wazuh** (SIEM, XDR & Compliance) 
 ---
 ### Software
 
+- **Ubuntu** >= 24.04 LTS
+- **Wazuh** >= 4.14
 - **Ansible** >= 2.15
 - **Python** >= 3.10
 - **SSH** acesso com chave para todos os hosts

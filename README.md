@@ -80,7 +80,7 @@ wazuh-ansible/
 ---
 
 ## Autor  
-  **Daniel Lara — Cloud & Security Architect**
+  **Daniel Lara —  Cloud Architect & Security Architect**
   
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/daniel-lara-souza-37372846/)
   [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/danniel-lara)
